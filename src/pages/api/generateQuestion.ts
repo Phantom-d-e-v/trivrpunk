@@ -48,8 +48,13 @@ export default async function handler(
     const parsed = JSON.parse(match[0]);
 
     return res.status(200).json(parsed);
-  } catch (error: any) {
-    console.error("Gemini generateQuestion error:", error.message);
+  } catch (error: unknown) {
+    // Optionally, use a type guard if you want to access error.message
+    const message =
+      typeof error === "object" && error !== null && "message" in error
+        ? (error as { message: string }).message
+        : String(error);
+    console.error("Gemini generateQuestion error:", message);
     return res.status(500).json({ error: "Failed to generate question." });
   }
 }
