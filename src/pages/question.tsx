@@ -2,7 +2,6 @@ import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/router";
 import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls, Html, Stars } from "@react-three/drei";
-import * as THREE from "three";
 
 type Trivia = {
   question: string;
