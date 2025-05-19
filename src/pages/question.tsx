@@ -2,6 +2,7 @@ import { useEffect, useState, Suspense, useRef } from "react";
 import { useRouter } from "next/router";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, OrbitControls, Stars, Html } from "@react-three/drei";
+import * as THREE from "three"; // Add this import
 
 type Trivia = {
   question: string;
@@ -18,7 +19,7 @@ function InteractiveOrb({
   onClick: () => void;
   spin: boolean;
 }) {
-  const meshRef = useRef<any>(null);
+  const meshRef = useRef<THREE.Mesh>(null); // Now THREE is defined
 
   // Handle orb spin animation
   useFrame(() => {
