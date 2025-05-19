@@ -19,7 +19,7 @@ function InteractiveOrb({
   onClick: () => void;
   spin: boolean;
 }) {
-  const meshRef = useRef<THREE.Mesh>(null); // Now THREE is defined
+  const meshRef = useRef<THREE.Mesh>(null);
 
   // Handle orb spin animation
   useFrame(() => {
@@ -34,7 +34,12 @@ function InteractiveOrb({
 
   return (
     <Float speed={2} rotationIntensity={1.2} floatIntensity={2}>
-      <mesh ref={meshRef} onClick={onClick} style={{ cursor: "pointer" }}>
+      <mesh
+        ref={meshRef}
+        onClick={onClick}
+        onPointerOver={(e) => (e.target.style.cursor = "pointer")}
+        onPointerOut={(e) => (e.target.style.cursor = "auto")}
+      >
         <sphereGeometry args={[1.7, 64, 64]} />
         <meshStandardMaterial color={color} roughness={0.25} metalness={0.8} emissive={color} emissiveIntensity={0.15} />
         <mesh>
