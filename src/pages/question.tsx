@@ -37,8 +37,14 @@ function InteractiveOrb({
       <mesh
         ref={meshRef}
         onClick={onClick}
-        onPointerOver={(e) => (e.target.style.cursor = "pointer")}
-        onPointerOut={(e) => (e.target.style.cursor = "auto")}
+        onPointerOver={(e: THREE.Event) => {
+          const target = e.target as HTMLElement;
+          if (target) target.style.cursor = "pointer";
+        }}
+        onPointerOut={(e: THREE.Event) => {
+          const target = e.target as HTMLElement;
+          if (target) target.style.cursor = "auto";
+        }}
       >
         <sphereGeometry args={[1.7, 64, 64]} />
         <meshStandardMaterial color={color} roughness={0.25} metalness={0.8} emissive={color} emissiveIntensity={0.15} />
