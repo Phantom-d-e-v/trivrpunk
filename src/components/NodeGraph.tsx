@@ -1,8 +1,8 @@
-// /components/NodeGraph.tsx
 import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text, Float } from "@react-three/drei";
 import { Vector3 } from "three";
+import * as THREE from "three";
 
 type Topic = {
   title: string;
@@ -34,7 +34,7 @@ const Node = ({
   position: Vector3;
   onClick: () => void;
 }) => {
-  const ref = useRef<unknown>();
+  const ref = useRef<THREE.Mesh>(null);
 
   return (
     <Float speed={2} floatIntensity={2} rotationIntensity={1}>
