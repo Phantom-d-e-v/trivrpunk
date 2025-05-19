@@ -34,7 +34,7 @@ const Node = ({
   position: Vector3;
   onClick: () => void;
 }) => {
-  const ref = useRef<any>();
+  const ref = useRef<unknown>();
 
   return (
     <Float speed={2} floatIntensity={2} rotationIntensity={1}>
